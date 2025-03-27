@@ -123,9 +123,9 @@
 //     try {
 //       for (const item of cartItems) {
 //         const { imageUrl, imageName, imageData, imageType, quantity, ...rest } = item;
-//         const updatedStockQuantity = item.stockQuantity - item.quantity;
+//         const updatedquantity = item.quantity - item.quantity;
   
-//         const updatedProductData = { ...rest, stockQuantity: updatedStockQuantity };
+//         const updatedProductData = { ...rest, quantity: updatedquantity };
 //         console.log("updated product data", updatedProductData)
   
 //         const cartProduct = new FormData();
@@ -273,6 +273,7 @@ const Cart = () => {
 
   useEffect(() => {
     const fetchImagesAndUpdateCart = async () => {
+      console.log("Cart", cart);
       try {
         const response = await axios.get("http://localhost:8080/api/products");
         const backendProductIds = response.data.map((product) => product.id);
@@ -323,7 +324,7 @@ const Cart = () => {
   const handleIncreaseQuantity = (itemId) => {
     const newCartItems = cartItems.map((item) => {
       if (item.id === itemId) {
-        if (item.quantity < item.stockQuantity) {
+        if (item.quantity < item.quantity) {
           return { ...item, quantity: item.quantity + 1 };
         } else {
           alert("Cannot add more than available stock");
@@ -354,9 +355,9 @@ const Cart = () => {
     try {
       for (const item of cartItems) {
         const { imageUrl, imageName, imageData, imageType, quantity, ...rest } = item;
-        const updatedStockQuantity = item.stockQuantity - item.quantity;
+        const updatedquantity = item.quantity - item.quantity;
   
-        const updatedProductData = { ...rest, stockQuantity: updatedStockQuantity };
+        const updatedProductData = { ...rest, quantity: updatedquantity };
         console.log("updated product data", updatedProductData)
   
         const cartProduct = new FormData();
@@ -404,11 +405,7 @@ const Cart = () => {
                   style={{ display: "flex", alignContent: "center" }}
                   key={item.id}
                 >
-                  <div className="buttons">
-                    <div className="buttons-liked">
-                      <i className="bi bi-heart"></i>
-                    </div>
-                  </div>
+                 
                   <div>
                     <img
                       src={item.imageUrl}
@@ -477,6 +474,7 @@ const Cart = () => {
         handleCheckout={handleCheckout}
       />
     </div>
+
   );
 };
 

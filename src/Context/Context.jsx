@@ -8,7 +8,7 @@ const AppContext = createContext({
   addToCart: (product) => {},
   removeFromCart: (productId) => {},
   refreshData:() =>{},
-  updateStockQuantity: (productId, newQuantity) =>{}
+  updatequantity: (productId, newQuantity) =>{}
   
 });
 

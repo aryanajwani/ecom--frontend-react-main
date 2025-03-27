@@ -15,7 +15,7 @@ const UpdateProduct = () => {
     category: "",
     releaseDate: "",
     productAvailable: false,
-    stockQuantity: "",
+    quantity: "",
   });
 
   useEffect(() => {
@@ -78,7 +78,7 @@ const UpdateProduct = () => {
 
   console.log("formData : ", updatedProduct)
     axios
-      .put(`http://localhost:8080/api/product/`, updatedProduct, {
+      .put(`http://localhost:8080/api/product`, updatedProduct, {
         headers: {
           "Content-Type": "multipart/form-data",
         },
@@ -180,6 +180,7 @@ const UpdateProduct = () => {
               id="category"
             >
               <option value="">Select category</option>
+              <option value="car">Car</option>
               <option value="laptop">Laptop</option>
               <option value="headphone">Headphone</option>
               <option value="mobile">Mobile</option>
@@ -197,10 +198,10 @@ const UpdateProduct = () => {
               type="number"
               className="form-control"
               onChange={handleChange}
-              placeholder={product.stockQuantity}
-              value={updateProduct.stockQuantity}
-              name="stockQuantity"
-              id="stockQuantity"
+              placeholder={product.quantity}
+              value={updateProduct.quantity}
+              name="quantity"
+              id="quantity"
             />
           </div>
           <div className="col-md-8">
